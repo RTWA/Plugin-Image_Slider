@@ -1,0 +1,123 @@
+/* Image Slider Plugin */
+body {
+    height: 100vh;
+}
+
+.embed {
+    position: relative;
+    height: 100%;
+}
+
+.embed .Slider {
+    min-height: 100%;
+    max-height: 100vh;
+    width: 100%;
+}
+
+#block-preview.Slider,
+#block-preview .Slider {
+    height: 350px;
+    width: 100%;
+}
+
+.preview .Slider {
+    min-height: 180px;
+    width: 100%;
+}
+
+
+.Slider{
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.Slider .slider-item {
+    display: block;
+    max-height: 100vh;
+    overflow: hidden;
+    background: #000;
+    position: absolute;
+    left: -100%;
+    width: 100%;
+    opacity: 0;
+    transition: 1s left ease, 1s opacity ease;
+}
+.Slider .slider-item.close {
+    opacity: 0;
+    left: 100%;
+}
+.Slider .slider-item.show {
+    z-index: 10;
+    opacity: 1;
+    left: 0;
+}
+.Slider .background {
+    display: block;
+    width: 100%;
+    max-height: 90vh;
+}
+.Slider .slider-item > img {
+    display: block;
+    width: 100%;
+}
+.Slider .switch {
+    z-index: 11;
+    display: block;
+    position: absolute;
+    bottom: .1rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.Slider .switch i {
+    float: left;
+    content: " ";
+    display: block;
+    width: 1.5rem;
+    height: 0.25rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.125rem rgba(40, 40, 40, 0.4);
+    background: rgba(255, 255, 255, 0.322);
+    margin: 0.125rem;
+    transition: 0.7s all;
+}
+.Slider .switch i.active {
+    background: rgba(255, 255, 255, 0.726);
+}
+.Slider .next,
+.Slider .prev {
+    z-index: 11;
+    position: absolute;
+    top: calc(50% - 1.5rem);
+    color: white;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    transition: 0.4s all;
+    opacity: 0.7;
+}
+.Slider .next svg,
+.Slider .prev svg {
+    position: absolute;
+    top: 27.5%;
+    left: 22.5%;
+    transition: 0.3s all;
+}
+.Slider .prev {
+    left: 1.5rem;
+}
+.Slider .next {
+    right: 1.5rem;
+}
+.Slider .next:hover,
+.Slider .prev:hover {
+    background: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .Slider .next,
+    .Slider .prev {
+        padding: 1rem;
+    }
+}
