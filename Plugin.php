@@ -65,14 +65,22 @@ class Slider_Plugin extends Plugin
                         </div>
                        </div>'
         ],
-        'repeater' => "$('.slider-item').removeClass('show'); $('#slide'+repeater).addClass('show');"
+        'repeater' => "var slides = document.getElementsByClassName('slider-item');
+                        var i;
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].classList.remove('show');
+                        }      
+                        var slide = document.getElementById('slide'+repeater);
+                        if (slide) {  
+                            slide.classList.add('show');
+                        }"
     ];
 
     public function output($edit = false)
     {
         $this->edit = $edit;
         ob_start();
-        require(__DIR__.'/include/_html.php');
+        require(__DIR__ . '/include/_html.php');
         $html = str_replace(["\r", "\n", "\t"], '', trim(ob_get_clean()));
         $html = preg_replace('/(\s){2,}/s', '', $html);
         return $html;
@@ -80,7 +88,7 @@ class Slider_Plugin extends Plugin
 
     public function style()
     {
-        return file_get_contents(__DIR__.'/include/_style.css');
+        return file_get_contents(__DIR__ . '/include/_style.css');
     }
 
     public function scripts($edit = false)
@@ -88,7 +96,7 @@ class Slider_Plugin extends Plugin
         if ($edit) {
             return '$("#slide1").addClass("show");';
         } else {
-            return file_get_contents(__DIR__.'/include/_slider.js');
+            return file_get_contents(__DIR__ . '/include/_slider.js');
         }
     }
 }
