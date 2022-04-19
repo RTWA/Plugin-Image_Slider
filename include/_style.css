@@ -21,8 +21,9 @@ body {
 }
 
 .preview .Slider {
-    min-height: 208px;
-    min-width: 208px;
+    min-height: 208px !important;
+    min-width: 208px !important;
+    height: 208px !important;
 }
 .preview .Slider .slider-item {
     max-height: 208px;
